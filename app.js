@@ -8,6 +8,7 @@ app.init = ()=>{
             $('#app-search').fadeIn();
         });        
     });
+    
     $('#app-title').addClass('io-title-animation');
 
     $('#az-button').on('click',function(event){
