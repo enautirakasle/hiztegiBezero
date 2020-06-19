@@ -46,18 +46,28 @@ button:focus {
 
 .io-primary{
 /*   background-color: rgb(114, 173, 230);
- */  display: block;
+ */  /* display: block;
   position: fixed;
   height: 100%;
   width: 100%;
   top: 0;
   left: 0;
   bottom: 0;
-  right: 0;
+  right: 0; */
   z-index: 10;
 }
 
 
+header {
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    top: 0px;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background: #ffffff;
+}
 
 header *{
   user-select: none;
@@ -66,7 +76,7 @@ header *{
 .io-title-area{
   display: flex;
   height: 48px;
-  margin:20px 30px;
+  margin:10px 15px;
   align-items: center;
   border-radius: 10px;
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.20);
@@ -124,8 +134,8 @@ header *{
   padding: 0px 20px;
   background-color: #666;
   color: white;
-  display: none;
-}
+/*   display: none;
+ */}
 
 .io-az-area b{
   display: inline-block;
@@ -148,7 +158,38 @@ header *{
  */  padding: 5px;
 }
 
+/*****************************
+*
+*
+*   MAIN
+*
+*
+******************************/
 
+main{
+  margin-top: 130px;
+}
+.io-berba-card{
+  padding: 10px;
+  margin:20px 30px;
+  align-items: center;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.20);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.20);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.20);
+  color:#666;
+}
+
+.io-berba-name{
+  font-weight: bold;
+}
+.io-berba-definizio{
+  font-size: smaller;
+  line-height: 1.3em;
+  max-height: 7.3em;
+  display: block;
+  overflow: hidden;
+}
 
 /*****************************
 *
@@ -178,7 +219,7 @@ position: relative;
  background-color: white;
  display: inline-block;
  height: 100%;
- width: 70%;
- left:-70%;
+ width: 280px;
+ left:-280px;
  padding: 0 30px;
 }

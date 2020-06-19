@@ -1,6 +1,38 @@
-var ajax_base = "https://ondarru.larrabeiti.com";
-
 var app = {}
+
+app.urlBase = "https://ondarru.larrabeiti.com";
+
+app.debug = true;
+
+app.log = (...arguments)=>{if(app.debug)console.log(arguments[0]);};
+
+app.get = (...arguments) => {
+    let gurl = app.urlBase + arguments[0];
+    let gdata = {};
+    let gsuccess = false;
+    switch(arguments.length){
+        case 2 : {
+            app.log("2 PARAMETRO");
+            gsuccess = arguments[1];
+        }break;
+        case 3 : {
+            app.log("3 PARAMETRO");
+            gdata = arguments[1];
+            gsuccess = arguments[2];
+        }break;
+        default:{
+            app.log("Parametro kopurua ez da zuzena");
+        }
+    }
+    $.ajax(gurl,{
+        data:gdata,
+        success:function(data){
+            if(gsuccess && data.code == "ok"){
+                gsuccess(data.response)
+            }
+        }
+    });
+}
 
 app.init = ()=>{
     $('#app-title').one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){
@@ -22,7 +54,9 @@ app.init = ()=>{
 
     $('#app-search').on('search',function(){
         $(this).blur();
+        app.get('/search/'+$(this).val(), response => {
 
+        })
     });
 
     $('#menu-button').on('click',function(){
@@ -34,7 +68,7 @@ app.init = ()=>{
     
     $('#menu').on('click',function(){
         $('#menu-area').animate({
-            left:["-70%","swing"]
+            left:["-280px","swing"]
         },350,function(){
             $('#menu').hide();
         });
@@ -45,6 +79,18 @@ app.init = ()=>{
         event.stopPropagation();
     });
 
+    app.get('/get/random/4',response =>{
+        html = ``;
+        for(let item of response){
+            html += /*html*/`
+                <div class="io-berba-card">
+                    <div class="io-berba-name">${item.name}</div>
+                    <div class="io-berba-definizio">${item.definizio.replace(/<([a-z][a-z0-9]*)[^>]*?(\/?)>/g,'<$1$2>').trim()}</div>
+                </div>
+            `;
+        }
+        $('main').html(html);
+    });
 };
 
 
